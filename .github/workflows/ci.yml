@@ -38,8 +38,8 @@ jobs:
         run: |
           BPF_CLANG=clang BPF_CFLAGS="-O2 -g -Wall -Werror " go generate .
           # timeout 5s go run -exec sudo .
-          #GOARCH=arm64 GOOS=android CGO_ENABLED=1 CC=aarch64-linux-android29-clang go build -ldflags "-w -s -extldflags '-Wl,--hash-style=sysv'" -o kprobe .
-          #file kprobe
+          GOARCH=arm64 GOOS=android CGO_ENABLED=1 CC=aarch64-linux-android29-clang go build -ldflags "-w -s -extldflags '-Wl,--hash-style=sysv'" -o kprobe .
+          file kprobe
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
